@@ -142,18 +142,11 @@ end
             TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
         end
 
-local queue_on_teleport = queue_on_teleport or syn and syn.queue_on_teleport 
+local queue_on_teleport = queue_on_teleport or syn and syn.queue_on_teleport
        repeat wait() until game:IsLoaded()
        loadstring(game:HttpGet('https://raw.githubusercontent.com/fartbot3000/ac/main/ac.lua'))(); tostring(OldPos)
-
-for i, v in pairs(Games) do
-    if i == game.PlaceId then
-        loadstring(game:HttpGet(v))()
-    end
 end
-
-for i, v in pairs(Unknown) do
-    loadstring(game:HttpGet(v))()
+end)
 end
 
     if msg == "?cmds" then
@@ -573,7 +566,4 @@ end
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
         --
         end
-end
-end
-end)
 end
