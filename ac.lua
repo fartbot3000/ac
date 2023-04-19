@@ -1,6 +1,3 @@
-wait(2)
-
-
 task.wait()
 
 if not game:IsLoaded() then 
