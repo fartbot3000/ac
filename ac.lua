@@ -1,4 +1,4 @@
-wait(3)
+wait(2)
 
 task.wait()
 
@@ -145,9 +145,9 @@ end
         end
 
     local Pos = GetRoot().CFrame
-    local queue_on_teleport = syn and syn.queue_on_teleport or queue_on_teleport
-    if queue_on_teleport then
-        queue_on_teleport(format("game.Loaded:Wait();game:GetService('ReplicatedFirst'):SetDefaultLoadingGuiRemoved();loadstring(game.HttpGet(game, \"https://raw.githubusercontent.com/fartbot3000/ac/main/ac.lua\"))()", tostring(OldPos)));
+    local fartteleport = syn and syn.queue_on_teleport or queue_on_teleport
+    if fartteleport then
+        fartteleport(format("game.Loaded:Wait();game:GetService('ReplicatedFirst'):SetDefaultLoadingGuiRemoved();loadstring(game.HttpGet(game, \"https://raw.githubusercontent.com/fartbot3000/ac/main/ac.lua\"))()", tostring(OldPos)));
     end
 end
 
