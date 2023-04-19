@@ -1,5 +1,3 @@
-wait(5)
-
 task.wait()
 
 if not game:IsLoaded() then 
@@ -143,14 +141,13 @@ end
         else
             TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
         end
-        syn.queue_on_teleport(string.format([[
-            game["Loaded"]:wait()
-            local Player = game:GetService("Players").LocalPlayer
-            local Character = Player.Character or Player.CharacterAdded:wait()
-            repeat task.wait() until Character and Character.PrimaryPart
-            Character:SetPrimaryPartCFrame(CFrame.new(%s))
-        ]], tostring(OldPos)))
+
+    local Pos = GetRoot().CFrame
+    local queue_on_teleport = syn and syn.queue_on_teleport or queue_on_teleport
+    if (queue_on_teleport) then
+        queue_on_teleport(format("game.Loaded:Wait();game:GetService('ReplicatedFirst'):SetDefaultLoadingGuiRemoved();loadstring(game.HttpGet(game, \"https://raw.githubusercontent.com/fartbot3000/ac/main/ac.lua\"))()", tostring(Pos)));
     end
+end
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
