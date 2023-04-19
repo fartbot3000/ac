@@ -100,9 +100,10 @@ end
     end
                 
     if msg == "?rj" then
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)
         ohString1 = "Rejoining on [Bot " .. i .. " of " .. #bots .. "]"
-        chatmsg(ohString1) 
+        chatmsg(ohString1)
+        wait(0.5)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)
     end
 
     if msg == "?cmds" then
@@ -525,4 +526,3 @@ end
         end
         end)
 end
--- alt control
