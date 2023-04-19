@@ -100,15 +100,9 @@ end
     end
                 
     if msg == "?rj" then
-    for i, botName in ipairs(bots) do
-    if game:GetService("Players").LocalPlayer.Name == botName then
-        ohString1 = "Rejoining on [Bot " .. i .. " of " .. #bots .. "]"
-        chatmsg(ohString1)
-        wait(1)
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
     end
-end
-end
+
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
         task.wait()
@@ -325,11 +319,11 @@ end
                 end
                 local offsets = {-2, -4, -6, -8, -10, -12, -14, -16, -18, -20, -22, -24, -26, -28, -30, -32, -34, -36, -38, -40}
                 local offset = offsets[botIndex] or 0
-        	if player == game:GetService("Players").LocalPlayer then
-            	chatmsg("The user you specified is one of your bots!")
-        	elseif table.find(bots, player.Name) then
-            	chatmsg("The user you specified is one of your bots!")
-        	else
+            if player == game:GetService("Players").LocalPlayer then
+                chatmsg("The user you specified is one of your bots!")
+            elseif table.find(bots, player.Name) then
+                chatmsg("The user you specified is one of your bots!")
+            else
                 getgenv().LoopLine = true
                 while getgenv().LoopLine do
                     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[player.Name].HumanoidRootPart.CFrame * CFrame.new(0, 0, offset)
