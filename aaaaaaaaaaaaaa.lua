@@ -422,7 +422,7 @@ end
 
 
 
-if msg:sub(1, 6) == "?to " then
+if msg:sub(1, 6) == "?goto " then
     getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
     local playerName = msg:sub(7)
     local Players = game:GetService("Players")
