@@ -10,8 +10,6 @@ local bots = args[1].bots
 local config = args[1].config
 
 
-
-
 if not (game:GetService("Players").LocalPlayer.Name == controller["MainAccount"]) then
     local UserSettings = UserSettings()
     UserSettings.GameSettings.MasterVolume = 0
@@ -100,19 +98,21 @@ end
     end
                 
     if msg == "?rj" then
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)
+        ohString1 = "Rejoining bot for an update to the script to replicate!"
+        chatmsg(ohString1) 
     end
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
         task.wait()
-        chatmsg("Cmds With Arguments Pg 1: ?say [args] | ?slowspam [args] | ?fastspam [args] | ?8ball [args] | ?wall [plr] | ?line [plr] | ?swarm [plr] | ?lookat [plr] | ?follow [plr] | ?goto [plr]")
+        chatmsg("Cmds With Arguments Pg 1: ?say | ?slowspam | ?fastspam | ?8ball | ?wall | ?line | ?swarm | ?lookat | ?follow | ?goto")
         task.wait(1)
-        chatmsg("Cmds With Arguments Pg 2: ?runlua [code] | ?calculate [equation]")
+        chatmsg("Cmds With Arguments Pg 2: ?runlua | ?calculate")
         task.wait(1)
-        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit")
+        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit | ?rotate")
         task.wait(1)
-        chatmsg("Stop Cmds: ?stop (for wall,swarm,line,lookat,follow cmds) | ?unspam (for slowspam,fastspam cmds) | ?stopemotes (self explanatory)")
+        chatmsg("Stop Cmds: ?stopall | ?unline | ?unwall | ?unswarm | ?unlookat | ?unspam | ?stopemotes")
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
             --
         end
@@ -121,7 +121,7 @@ end
     if msg == "?jump" then
         game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = true
     end
-
+    
     if msg == "?sit" then
         game:GetService("Players").LocalPlayer.Character.Humanoid.Sit = true
     end
@@ -319,11 +319,11 @@ end
                 end
                 local offsets = {-2, -4, -6, -8, -10, -12, -14, -16, -18, -20, -22, -24, -26, -28, -30, -32, -34, -36, -38, -40}
                 local offset = offsets[botIndex] or 0
-            if player == game:GetService("Players").LocalPlayer then
-                chatmsg("The user you specified is one of your bots!")
-            elseif table.find(bots, player.Name) then
-                chatmsg("The user you specified is one of your bots!")
-            else
+        	if player == game:GetService("Players").LocalPlayer then
+            	chatmsg("The user you specified is one of your bots!")
+        	elseif table.find(bots, player.Name) then
+            	chatmsg("The user you specified is one of your bots!")
+        	else
                 getgenv().LoopLine = true
                 while getgenv().LoopLine do
                     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[player.Name].HumanoidRootPart.CFrame * CFrame.new(0, 0, offset)
@@ -422,7 +422,7 @@ end
 
 
 
-if msg:sub(1, 6) == "?goto " then
+if msg:sub(1, 6) == "?to " then
     getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
     local playerName = msg:sub(7)
     local Players = game:GetService("Players")
@@ -521,5 +521,5 @@ end
         --
         end
         end
-    end)
-    end
+        end)
+end
