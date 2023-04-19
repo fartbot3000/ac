@@ -101,7 +101,7 @@ end
                 
     if msg == "?rj" then
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)
-        ohString1 = "Rejoining bot for an update to the script to replicate!"
+        ohString1 = "Rejoining on [Bot " .. i .. " of " .. #bots .. "]"
         chatmsg(ohString1) 
     end
 
