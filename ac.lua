@@ -459,7 +459,7 @@ if msg:sub(1, 6) == ".slto " then
     local Players = game:GetService("Players")
     local LocalPlayer = Players.LocalPlayer
 
-    local function gotoPlayer(playerName)
+    local function TweenToPlayer(playerName)
         for _, player in ipairs(Players:GetPlayers()) do
             if (string.lower(player.Name):sub(1, #playerName) == string.lower(playerName)
                 or string.lower(player.DisplayName):sub(1, #playerName) == string.lower(playerName)) then
@@ -478,7 +478,7 @@ tween:Play()
             end
         end
     end
-    gotoPlayer(playerName)
+    TweenToPlayer(playerName)
 end
             
         if msg == ".stopall" then
