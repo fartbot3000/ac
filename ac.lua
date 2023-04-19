@@ -453,9 +453,9 @@ if msg:sub(1, 6) == ".goto " then
     gotoPlayer(playerName)
 end
 
-if msg:sub(1, 7) == ".tgoto " then
+if msg:sub(1, 6) == ".slto " then
     getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopGreet = false, false, false, false
-    local playerName = msg:sub(8)
+    local playerName = msg:sub(7)
     local Players = game:GetService("Players")
     local LocalPlayer = Players.LocalPlayer
 
