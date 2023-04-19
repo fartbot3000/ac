@@ -456,7 +456,7 @@ end
 
 
             
-        if msg == "?stop" then
+        if msg == "?stopall" then
         getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
         end
 
@@ -470,6 +470,22 @@ end
 
         if msg == "?unlookat" then
         getgenv().LoopLook = false
+        end
+
+        if msg == "?unswarm" then
+        getgenv().LoopSwarm = false
+        end
+
+        if msg == "?unfollow" then
+        getgenv().LoopFollow = false
+        end
+
+        if msg == "?unwall" then
+        getgenv().LoopWall = false
+        end
+
+        if msg == "?unline" then
+        getgenv().LoopLine = false
         end
 
         if msg == "?rotate" then
