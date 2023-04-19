@@ -1,5 +1,3 @@
-wait(2)
-
 task.wait()
 
 if not game:IsLoaded() then 
@@ -102,12 +100,15 @@ end
     end
                 
     if msg == "?rj" then
+    for i, botName in ipairs(bots) do
+    if game:GetService("Players").LocalPlayer.Name == botName then
         ohString1 = "Rejoining on [Bot " .. i .. " of " .. #bots .. "]"
         chatmsg(ohString1)
         wait(1)
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
     end
-
+end
+end
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
         task.wait()
