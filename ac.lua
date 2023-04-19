@@ -142,7 +142,6 @@ end
             TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
         end
 
-    local Pos = GetRoot().CFrame
 local queue_on_teleport =
     queue_on_teleport or
     syn and
