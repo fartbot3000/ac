@@ -112,6 +112,7 @@ end
     game:GetService("Players"):Chat("/e dance3", {}, LocalPlayer);
 end
     end)
+end
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
@@ -530,5 +531,4 @@ end
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
         --
         end
-end
-end
+        end
