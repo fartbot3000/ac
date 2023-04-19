@@ -149,8 +149,6 @@ end
             Character:SetPrimaryPartCFrame(CFrame.new(%s))
         ]], tostring(OldPos)))
     end
-end)
-    end
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
@@ -570,4 +568,5 @@ end
         --
         end
 end
---test
+end)
+end
