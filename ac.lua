@@ -142,11 +142,8 @@ end
             TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
         end
 
-local queue_on_teleport =
-    queue_on_teleport or
-    syn and
-        syn.queue_on_teleport 
-       repeat wait() until game:IsLoaded() wait(5) print("ServerHoped or rejoined")
+local queue_on_teleport = queue_on_teleport or syn and syn.queue_on_teleport 
+       repeat wait() until game:IsLoaded()
        loadstring(game:HttpGet('https://raw.githubusercontent.com/fartbot3000/ac/main/ac.lua'))(); tostring(OldPos)
 
 for i, v in pairs(Games) do
