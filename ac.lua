@@ -142,12 +142,15 @@ end
             TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
         end
 
-local queue_on_teleport = queue_on_teleport or syn and syn.queue_on_teleport
-       repeat wait() until game:IsLoaded()
-       loadstring(game:HttpGet('https://raw.githubusercontent.com/fartbot3000/ac/main/ac.lua'))(); tostring(OldPos)
-end
+syn.queue_on_teleport(string.format([[
+            game["Loaded"]:wait()
+            local Player = game:GetService("Players").LocalPlayer
+            local Character = Player.Character or Player.CharacterAdded:wait()
+            repeat task.wait() until Character and Character.PrimaryPart
+            Character:SetPrimaryPartCFrame(CFrame.new(%s))
+        ]], "loadstring(game.HttpGet(game, \"https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua\"))()", tostring(OldPos)))
+	end
 end)
-end
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
@@ -566,4 +569,5 @@ end
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
         --
         end
+end
 end
