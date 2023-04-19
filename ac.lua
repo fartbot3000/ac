@@ -145,11 +145,14 @@ end
         end
 
     local Pos = GetRoot().CFrame
-    local fartteleport = syn and syn.queue_on_teleport or queue_on_teleport
-    if fartteleport then
-        fartteleport(format("game.Loaded:Wait();game:GetService('ReplicatedFirst'):SetDefaultLoadingGuiRemoved();loadstring(game.HttpGet(game, \"https://raw.githubusercontent.com/fartbot3000/ac/main/ac.lua\"))()", tostring(OldPos)));
-    end
-end
+local queue_on_teleport =
+queue_on_teleport or
+    syn and
+        syn.queue_on_teleport [[
+       repeat wait() until game:IsLoaded() wait(5) print("ServerHoped or rejoined")
+       loadstring(game:HttpGet('https://raw.githubusercontent.com/fartbot3000/ac/main/ac.lua'))()]]; tostring(OldPos)
+   end
+end)
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
