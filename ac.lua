@@ -104,8 +104,8 @@ end
     if msg == "?rj" then
         ohString1 = "Rejoining on [Bot " .. i .. " of " .. #bots .. "]"
         chatmsg(ohString1)
-        wait(0.5)
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)
+        wait(1)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
     end
 
     if msg == "?cmds" then
