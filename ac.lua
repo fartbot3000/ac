@@ -471,7 +471,7 @@ if msg:sub(1, 6) == ".slto " then
                     local humanoidRootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
                     if humanoidRootPart then
 tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(3, Enum.EasingStyle.Elastic)
-local tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(game.Workspace[playerName].HumanoidRootPart.Position + Vector3.new(0, 0, 0))})
+local tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.lookAt(game.Workspace[playerName].HumanoidRootPart.Position + Vector3.new(0, 0, 0))})
 tween:Play()
                     end
                 end
