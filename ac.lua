@@ -151,6 +151,7 @@ syn.queue_on_teleport(string.format([[
         ]], "loadstring(game.HttpGet(game, \"https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua\"))()", tostring(OldPos)))
 	end
 end)
+end
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
@@ -569,5 +570,4 @@ end
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
         --
         end
-end
 end
