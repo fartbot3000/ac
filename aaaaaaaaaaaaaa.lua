@@ -104,12 +104,12 @@ end
     end
     
     if msg == "?rje" then
-            local Pos = GetRoot().CFrame
+    local Pos = GetRoot().CFrame
     local queue_on_teleport = syn and syn.queue_on_teleport or queue_on_teleport
     if (queue_on_teleport) then
         queue_on_teleport(format("game.Loaded:Wait();game:GetService('ReplicatedFirst'):SetDefaultLoadingGuiRemoved();local LocalPlayer = game:GetService('Players').LocalPlayer;LocalPlayer.CharacterAdded:Wait():WaitForChild('HumanoidRootPart').CFrame = CFrame.new(%s);loadstring(game.HttpGet(game, \"https://raw.githubusercontent.com/fartbot3000/ac/main/aaaaaaaaaaaaaa.lua\"))()", tostring(Pos)));
     end
-    ExecuteCommand("rejoin", {}, LocalPlayer);
+    game:GetService("Players"):Chat("/e dance3", {}, LocalPlayer);
 end
     end)
 
