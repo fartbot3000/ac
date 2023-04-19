@@ -336,7 +336,7 @@ end
        end
 
 if msg:sub(1, 7) == "?swarm " then
-    getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
+    getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false
     for i, plr in ipairs(game:GetService("Players"):GetPlayers()) do
         if string.find(string.lower(plr.Name), string.lower(msg:sub(8))) or string.find(string.lower(plr.DisplayName), string.lower(msg:sub(8))) then
             if plr == game:GetService("Players").LocalPlayer then
