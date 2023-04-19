@@ -490,6 +490,49 @@ end
         end)
         end
  
+if msg == "?rotateF" then
+        local spin =  Instance.new("BodyAngularVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+        spin.AngularVelocity = Vector3.new(0, -25, 0)
+
+        local TweenService = game:GetService("TweenService")
+        local primaryPart = spin
+        local speed = 15
+        local rotation = Vector3.new(0, 25, 0) -- put your rotation here
+
+        local tweenInfo = TweenInfo.new(speed, Enum.EasingStyle.Linear, Enum.EasingDirection.In, 0, false, 0)
+
+        local tween = TweenService:Create(primaryPart, tweenInfo, {AngularVelocity = rotation})
+
+        tween:Play() -- Put this line wherever you like.
+        tween.Completed:Connect(function(PlaybackState)
+        if PlaybackState == Enum.PlaybackState.Completed then
+        spin:Destroy()
+        end
+        end)
+        end
+ 
+ if msg == "?rotateS" then
+        local spin =  Instance.new("BodyAngularVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+        spin.AngularVelocity = Vector3.new(0, -25, 0)
+
+        local TweenService = game:GetService("TweenService")
+        local primaryPart = spin
+        local speed = 1
+        local rotation = Vector3.new(0, 25, 0) -- put your rotation here
+
+        local tweenInfo = TweenInfo.new(speed, Enum.EasingStyle.Linear, Enum.EasingDirection.In, 0, false, 0)
+
+        local tween = TweenService:Create(primaryPart, tweenInfo, {AngularVelocity = rotation})
+
+        tween:Play() -- Put this line wherever you like.
+        tween.Completed:Connect(function(PlaybackState)
+        if PlaybackState == Enum.PlaybackState.Completed then
+        spin:Destroy()
+        end
+        end)
+        end
+ 
+
         if msg == "?playercount" then
         if game.Players.LocalPlayer.Name == bots[1] then
         local botAmount = 0
