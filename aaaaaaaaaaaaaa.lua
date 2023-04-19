@@ -102,17 +102,6 @@ end
     if msg == "?rj" then
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
     end
-    
-    if msg == "?rje" then
-    local Pos = GetRoot().CFrame
-    local queue_on_teleport = syn and syn.queue_on_teleport or queue_on_teleport
-    if (queue_on_teleport) then
-        queue_on_teleport(format("game.Loaded:Wait();game:GetService('ReplicatedFirst'):SetDefaultLoadingGuiRemoved();local LocalPlayer = game:GetService('Players').LocalPlayer;LocalPlayer.CharacterAdded:Wait():WaitForChild('HumanoidRootPart').CFrame = CFrame.new(%s);loadstring(game.HttpGet(game, \"https://raw.githubusercontent.com/fartbot3000/ac/main/aaaaaaaaaaaaaa.lua\"))()", tostring(Pos)));
-    end
-    game:GetService("Players"):Chat("/e dance3", {}, LocalPlayer);
-end
-    end)
-end
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
@@ -121,7 +110,7 @@ end
         task.wait(1)
         chatmsg("Cmds With Arguments Pg 2: ?runlua [code] | ?calculate [equation]")
         task.wait(1)
-        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?rje | ?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit")
+        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit")
         task.wait(1)
         chatmsg("Stop Cmds: ?stop (for wall,swarm,line,lookat,follow cmds) | ?unspam (for slowspam,fastspam cmds) | ?stopemotes (self explanatory)")
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
@@ -532,3 +521,5 @@ end
         --
         end
         end
+    end)
+    end
