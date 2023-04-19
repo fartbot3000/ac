@@ -103,6 +103,55 @@ end
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
     end
 
+    if msg == "?rje" then
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local Player = Players.LocalPlayer
+        local Character = Player.Character or false
+        local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid") or false
+        local RootPart = Humanoid and Humanoid.RootPart or false
+        local PrimaryPart = Character and Character.PrimaryPart or false
+        local BasePart = Character and Character:FindFirstChildWhichIsA("BasePart", true) or false
+        local Camera = workspace:FindFirstChildWhichIsA("Camera") or false
+        local OldPos
+        if RootPart then
+            OldPos = RootPart.CFrame
+        elseif PrimaryPart then
+            OldPos = PrimaryPart.CFrame
+        elseif BasePart then
+            OldPos = BasePart.CFrame
+        elseif Camera then
+            OldPos = Camera.Focus
+        end
+        if #Players:GetPlayers() <= 1 then
+            Player:Kick()
+            coroutine.wrap(function()
+                local PromptGui = CoreGui:WaitForChild("RobloxPromptGui")
+                local ErrorTitle = PromptGui:FindFirstChild("ErrorTitle", true)
+                local ErrorMessage = PromptGui:FindFirstChild("ErrorMessage", true)
+                ErrorTitle.Text = "Rejoining Experience Shortly"
+                while true do
+                    for i = 1, 3 do
+                        ErrorMessage.Text = "You are currently reconnecting to this game" .. string.rep(".", i) .. "\n" .. "PlaceId: " .. game["PlaceId"]
+                        wait(1)
+                    end
+                end
+            end)()
+            TeleportService:Teleport(game["PlaceId"])
+        else
+            TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
+        end
+        syn.queue_on_teleport(string.format([[
+            game["Loaded"]:wait()
+            local Player = game:GetService("Players").LocalPlayer
+            local Character = Player.Character or Player.CharacterAdded:wait()
+            repeat task.wait() until Character and Character.PrimaryPart
+            Character:SetPrimaryPartCFrame(CFrame.new(%s))
+        ]], tostring(OldPos)))
+    end
+end)
+    end
+
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
         task.wait()
@@ -110,7 +159,7 @@ end
         task.wait(1)
         chatmsg("Cmds With Arguments Pg 2: ?runlua [code] | ?calculate [equation]")
         task.wait(1)
-        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit")
+        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?rje |?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit")
         task.wait(1)
         chatmsg("Stop Cmds: ?stop (for wall,swarm,line,lookat,follow cmds) | ?unspam (for slowspam,fastspam cmds) | ?stopemotes (self explanatory)")
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
@@ -520,6 +569,4 @@ end
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
         --
         end
-        end
-        end)
 end
