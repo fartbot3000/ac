@@ -103,54 +103,6 @@ end
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
     end
 
-    if msg == "?rje" then
-        local TeleportService = game:GetService("TeleportService")
-        local Players = game:GetService("Players")
-        local Player = Players.LocalPlayer
-        local Character = Player.Character or false
-        local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid") or false
-        local RootPart = Humanoid and Humanoid.RootPart or false
-        local PrimaryPart = Character and Character.PrimaryPart or false
-        local BasePart = Character and Character:FindFirstChildWhichIsA("BasePart", true) or false
-        local Camera = workspace:FindFirstChildWhichIsA("Camera") or false
-        local OldPos
-        if RootPart then
-            OldPos = RootPart.CFrame
-        elseif PrimaryPart then
-            OldPos = PrimaryPart.CFrame
-        elseif BasePart then
-            OldPos = BasePart.CFrame
-        elseif Camera then
-            OldPos = Camera.Focus
-        end
-        if #Players:GetPlayers() <= 1 then
-            Player:Kick()
-            coroutine.wrap(function()
-                local PromptGui = CoreGui:WaitForChild("RobloxPromptGui")
-                local ErrorTitle = PromptGui:FindFirstChild("ErrorTitle", true)
-                local ErrorMessage = PromptGui:FindFirstChild("ErrorMessage", true)
-                ErrorTitle.Text = "Rejoining Experience Shortly"
-                while true do
-                    for i = 1, 3 do
-                        ErrorMessage.Text = "You are currently reconnecting to this game" .. string.rep(".", i) .. "\n" .. "PlaceId: " .. game["PlaceId"]
-                        wait(1)
-                    end
-                end
-            end)()
-            TeleportService:Teleport(game["PlaceId"])
-        else
-            TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
-        end
-
-syn.queue_on_teleport(string.format([[
-            game["Loaded"]:wait()
-            local Player = game:GetService("Players").LocalPlayer
-            local Character = Player.Character or Player.CharacterAdded:wait()
-            repeat task.wait() until Character and Character.PrimaryPart
-            Character:SetPrimaryPartCFrame(CFrame.new(%s))
-        ]],  tostring(OldPos)))
-	end
-end)
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
@@ -570,4 +522,5 @@ end
         --
         end
 end
+end)
 end
