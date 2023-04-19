@@ -453,34 +453,6 @@ if msg:sub(1, 6) == ".goto " then
     gotoPlayer(playerName)
 end
 
-if msg:sub(1, 6) == ".slto " then
-    getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopGreet = false, false, false, false
-    local playerName = msg:sub(7)
-    local Players = game:GetService("Players")
-    local LocalPlayer = Players.LocalPlayer
-
-    local function TweenToPlayer(playerName)
-        for _, player in ipairs(Players:GetPlayers()) do
-            if (string.lower(player.Name):sub(1, #playerName) == string.lower(playerName)
-                or string.lower(player.DisplayName):sub(1, #playerName) == string.lower(playerName)) then
-                if player == LocalPlayer then
-                    chatmsg("The user you specified is one of your bots!")
-                elseif table.find(bots, player.Name) then
-                    chatmsg("The user you specified is one of your bots!")
-                else
-                    local humanoidRootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
-                    if humanoidRootPart then
-tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(3, Enum.EasingStyle.Elastic)
-local tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.lookAt(game.Workspace[playerName].HumanoidRootPart.Position + Vector3.new(0, 0, 0))})
-tween:Play()
-                    end
-                end
-            end
-        end
-    end
-    TweenToPlayer(playerName)
-end
-            
         if msg == ".stopall" then
         getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
         end
