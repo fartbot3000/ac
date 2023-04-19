@@ -1,3 +1,5 @@
+wait(5)
+
 task.wait()
 
 if not game:IsLoaded() then 
