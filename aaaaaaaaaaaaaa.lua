@@ -499,7 +499,7 @@ end
 		game.Players.LocalPlayer.Character = nil
 		game.Players.LocalPlayer.Character = workspace[game.Players.LocalPlayer.Name]
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
-		wait(0.5)
+		wait(0.6)
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
 		game.Players.LocalPlayer.CharacterAdded:Wait():WaitForChild('HumanoidRootPart')['CFrame'] = pos
 		local FaggotFucktard = imgay.Character:WaitForChild("ForceField")
