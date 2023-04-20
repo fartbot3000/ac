@@ -12,6 +12,8 @@ local bots = args[1].bots
 local config = args[1].config
 
 
+
+
 if not (game:GetService("Players").LocalPlayer.Name == controller["MainAccount"]) then
     local UserSettings = UserSettings()
     UserSettings.GameSettings.MasterVolume = 0
@@ -100,21 +102,115 @@ end
     end
                 
     if msg == "?rj" then
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)
-        ohString1 = "Rejoining bot for an update to the script to replicate!"
-        chatmsg(ohString1) 
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
+    end
+
+    if msg == "?rje" then
+                local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local Player = Players.LocalPlayer
+        local Character = Player.Character or false
+        local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid") or false
+        local RootPart = Humanoid and Humanoid.RootPart or false
+        local PrimaryPart = Character and Character.PrimaryPart or false
+        local BasePart = Character and Character:FindFirstChildWhichIsA("BasePart", true) or false
+        local Camera = workspace:FindFirstChildWhichIsA("Camera") or false
+        local OldPos
+        if RootPart then
+            OldPos = RootPart.CFrame
+        elseif PrimaryPart then
+            OldPos = PrimaryPart.CFrame
+        elseif BasePart then
+            OldPos = BasePart.CFrame
+        elseif Camera then
+            OldPos = Camera.Focus
+        end
+        if #Players:GetPlayers() <= 1 then
+            Player:Kick()
+            coroutine.wrap(function()
+                local PromptGui = CoreGui:WaitForChild("RobloxPromptGui")
+                local ErrorTitle = PromptGui:FindFirstChild("ErrorTitle", true)
+                local ErrorMessage = PromptGui:FindFirstChild("ErrorMessage", true)
+                ErrorTitle.Text = "Rejoining Experience Shortly"
+                while true do
+                    for i = 1, 3 do
+                        ErrorMessage.Text = "You are currently reconnecting to this game" .. string.rep(".", i) .. "\n" .. "PlaceId: " .. game["PlaceId"]
+                        wait(1)
+                    end
+                end
+            end)()
+            TeleportService:Teleport(game["PlaceId"])
+        else
+            TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
+        end
+        syn.queue_on_teleport(string.format([[
+            game["Loaded"]:wait()
+            local Player = game:GetService("Players").LocalPlayer
+            local Character = Player.Character or Player.CharacterAdded:wait()
+            repeat task.wait() until Character and Character.PrimaryPart
+            Character:SetPrimaryPartCFrame(CFrame.new(%s))
+        ]], tostring(OldPos)))
+    end
+end)
+    end
+
+    if msg == "?rje" then
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local Player = Players.LocalPlayer
+        local Character = Player.Character or false
+        local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid") or false
+        local RootPart = Humanoid and Humanoid.RootPart or false
+        local PrimaryPart = Character and Character.PrimaryPart or false
+        local BasePart = Character and Character:FindFirstChildWhichIsA("BasePart", true) or false
+        local Camera = workspace:FindFirstChildWhichIsA("Camera") or false
+        local OldPos
+        if RootPart then
+            OldPos = RootPart.CFrame
+        elseif PrimaryPart then
+            OldPos = PrimaryPart.CFrame
+        elseif BasePart then
+            OldPos = BasePart.CFrame
+        elseif Camera then
+            OldPos = Camera.Focus
+        end
+        if #Players:GetPlayers() <= 1 then
+            Player:Kick()
+            coroutine.wrap(function()
+                local PromptGui = CoreGui:WaitForChild("RobloxPromptGui")
+                local ErrorTitle = PromptGui:FindFirstChild("ErrorTitle", true)
+                local ErrorMessage = PromptGui:FindFirstChild("ErrorMessage", true)
+                ErrorTitle.Text = "Rejoining Experience Shortly"
+                while true do
+                    for i = 1, 3 do
+                        ErrorMessage.Text = "You are currently reconnecting to this game" .. string.rep(".", i) .. "\n" .. "PlaceId: " .. game["PlaceId"]
+                        wait(1)
+                    end
+                end
+            end)()
+            TeleportService:Teleport(game["PlaceId"])
+        else
+            TeleportService:TeleportToPlaceInstance(game["PlaceId"], game["JobId"])
+        end
+        syn.queue_on_teleport(string.format([[
+            game["Loaded"]:wait()
+            local Player = game:GetService("Players").LocalPlayer
+            local Character = Player.Character or Player.CharacterAdded:wait()
+            repeat task.wait() until Character and Character.PrimaryPart
+            Character:SetPrimaryPartCFrame(CFrame.new(%s))
+        ]], tostring(OldPos)))
     end
 
     if msg == "?cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
         task.wait()
-        chatmsg("Cmds With Arguments Pg 1: ?say | ?slowspam | ?fastspam | ?8ball | ?wall | ?line | ?swarm | ?lookat | ?follow | ?goto")
+        chatmsg("Cmds With Arguments Pg 1: ?say [args] | ?slowspam [args] | ?fastspam [args] | ?8ball [args] | ?wall [plr] | ?line [plr] | ?swarm [plr] | ?lookat [plr] | ?follow [plr] | ?goto [plr]")
         task.wait(1)
-        chatmsg("Cmds With Arguments Pg 2: ?runlua | ?calculate")
+        chatmsg("Cmds With Arguments Pg 2: ?runlua [code] | ?calculate [equation]")
         task.wait(1)
-        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit | ?rotate")
+        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?rje |?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit | ?leg")
         task.wait(1)
-        chatmsg("Stop Cmds: ?stopall | ?unline | ?unwall | ?unswarm | ?unlookat | ?unspam | ?stopemotes")
+        chatmsg("Stop Cmds: ?stop (for wall,swarm,line,lookat,follow cmds) | ?unspam (for slowspam,fastspam cmds) | ?stopemotes (self explanatory)")
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
             --
         end
@@ -123,9 +219,39 @@ end
     if msg == "?jump" then
         game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = true
     end
-    
+
     if msg == "?sit" then
         game:GetService("Players").LocalPlayer.Character.Humanoid.Sit = true
+    end
+
+    if msg == "?leg" then
+        local function delete()
+            game.Players.LocalPlayer.Character.LeftFoot.OriginalSize:Destroy()
+            game.Players.LocalPlayer.Character.LeftLowerLeg.OriginalSize:Destroy()
+            game.Players.LocalPlayer.Character.LeftUpperLeg.OriginalSize:Destroy()
+        end
+        local function makeNew()
+            local thing = Instance.new('Vector3Value', game.Players.LocalPlayer.Character.LeftFoot)
+            thing.Name = 'OriginalSize'
+            local thing = Instance.new('Vector3Value', game.Players.LocalPlayer.Character.LeftLowerLeg)
+            thing.Name = 'OriginalSize'
+            local thing = Instance.new('Vector3Value', game.Players.LocalPlayer.Character.LeftUpperLeg)
+            thing.Name = 'OriginalSize'
+        end
+        if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+            game.Players.LocalPlayer.Character.LeftLowerLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+            game.Players.LocalPlayer.Character.LeftUpperLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+            game.Players.LocalPlayer.Character.LeftLowerLeg.LeftKneeRigAttachment:Destroy()
+            game.Players.LocalPlayer.Character.LeftUpperLeg.LeftKneeRigAttachment:Destroy()
+            for i, v in next, game.Players.LocalPlayer.Character.Humanoid:GetChildren() do
+                if v:IsA'NumberValue' then
+                    delete()
+                    v:Destroy()
+                    makeNew()
+                    task.wait(0.1)
+                end
+            end
+        end
     end
 
     if msg == "?unsit" then
@@ -321,11 +447,11 @@ end
                 end
                 local offsets = {-2, -4, -6, -8, -10, -12, -14, -16, -18, -20, -22, -24, -26, -28, -30, -32, -34, -36, -38, -40}
                 local offset = offsets[botIndex] or 0
-        	if player == game:GetService("Players").LocalPlayer then
-            	chatmsg("The user you specified is one of your bots!")
-        	elseif table.find(bots, player.Name) then
-            	chatmsg("The user you specified is one of your bots!")
-        	else
+            if player == game:GetService("Players").LocalPlayer then
+                chatmsg("The user you specified is one of your bots!")
+            elseif table.find(bots, player.Name) then
+                chatmsg("The user you specified is one of your bots!")
+            else
                 getgenv().LoopLine = true
                 while getgenv().LoopLine do
                     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[player.Name].HumanoidRootPart.CFrame * CFrame.new(0, 0, offset)
@@ -522,6 +648,4 @@ end
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
         --
         end
-        end
-        end)
 end
