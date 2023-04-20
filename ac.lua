@@ -100,9 +100,7 @@ end
     end
                 
     if msg == ".rj" then
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)
-        ohString1 = "Rejoining bot for an update to the script to replicate!"
-        chatmsg(ohString1) 
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
     end
 
     if msg == ".cmds" then
