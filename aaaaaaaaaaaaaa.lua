@@ -63,7 +63,7 @@ end
         game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, target)
     end
         
-    if cmd == "?say" then
+    if cmd == ".say" then
         local say_msg = string.sub(msg, string.len(cmd)+2, string.len(msg))
         ohString1 = say_msg
         chatmsg(ohString1)
@@ -72,7 +72,7 @@ end
     local args = string.split(string.lower(msg), " ")
     local cmd = args[1]
                 
-    if cmd == "?slowspam" then
+    if cmd == ".slowspam" then
         getgenv().LoopSlowSpam = false
         getgenv().LoopFastSpam = false
         local say_msg = string.sub(msg, string.len(cmd)+2, string.len(msg))
@@ -84,7 +84,7 @@ end
         end
     end
     
-    if cmd == "?fastspam" then
+    if cmd == ".fastspam" then
         getgenv().LoopFastSpam = false
         getgenv().LoopSlowSpam = false
         local say_msg = string.sub(msg, string.len(cmd)+2, string.len(msg))
@@ -96,16 +96,16 @@ end
         end
     end
                 
-    if msg == "?unspam" then
+    if msg == ".unspam" then
         getgenv().LoopFastSpam = false
         getgenv().LoopSlowSpam = false
     end
                 
-    if msg == "?rj" then
+    if msg == ".rj" then
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
     end
 
-    if msg == "?rje" then
+    if msg == ".rje" then
                 local TeleportService = game:GetService("TeleportService")
         local Players = game:GetService("Players")
         local Player = Players.LocalPlayer
@@ -154,7 +154,7 @@ end
 end)
     end
 
-    if msg == "?rje" then
+    if msg == ".rje" then
         local TeleportService = game:GetService("TeleportService")
         local Players = game:GetService("Players")
         local Player = Players.LocalPlayer
@@ -201,30 +201,30 @@ end)
         ]], tostring(OldPos)))
     end
 
-    if msg == "?cmds" then
+    if msg == ".cmds" then
         if game.Players.LocalPlayer.Name == bots[1] then
         task.wait()
-        chatmsg("Cmds With Arguments Pg 1: ?say [args] | ?slowspam [args] | ?fastspam [args] | ?8ball [args] | ?wall [plr] | ?line [plr] | ?swarm [plr] | ?lookat [plr] | ?follow [plr] | ?goto [plr]")
+        chatmsg("Cmds With Arguments Pg 1: .say [args] | .slowspam [args] | .fastspam [args] | .8ball [args] | .wall [plr] | .line [plr] | .swarm [plr] | .lookat [plr] | .follow [plr] | .goto [plr]")
         task.wait(1)
-        chatmsg("Cmds With Arguments Pg 2: ?runlua [code] | ?calculate [equation]")
+        chatmsg("Cmds With Arguments Pg 2: .runlua [code] | .calculate [equation]")
         task.wait(1)
-        chatmsg("Cmds Without Arguments List: ?re | ?rj | ?rje |?playercount | ?dance1 | ?dance2 | ?dance3 | ?dance4 | ?laugh | ?wave | ?cheer | ?point | ?jump | ?sv | ?sit | ?unsit | ?leg")
+        chatmsg("Cmds Without Arguments List: .re | .rj | .rje |.playercount | .dance1 | .dance2 | .dance3 | .dance4 | .laugh | .wave | .cheer | .point | .jump | .sv | .sit | .unsit | .leg")
         task.wait(1)
-        chatmsg("Stop Cmds: ?stop (for wall,swarm,line,lookat,follow cmds) | ?unspam (for slowspam,fastspam cmds) | ?stopemotes (self explanatory)")
+        chatmsg("Stop Cmds: .stop (for wall,swarm,line,lookat,follow cmds) | .unspam (for slowspam,fastspam cmds) | .stopemotes (self explanatory)")
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
             --
         end
     end
             
-    if msg == "?jump" then
+    if msg == ".jump" then
         game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = true
     end
 
-    if msg == "?sit" then
+    if msg == ".sit" then
         game:GetService("Players").LocalPlayer.Character.Humanoid.Sit = true
     end
 
-    if msg == "?leg" then
+    if msg == ".leg" then
         local function delete()
             game.Players.LocalPlayer.Character.LeftFoot.OriginalSize:Destroy()
             game.Players.LocalPlayer.Character.LeftLowerLeg.OriginalSize:Destroy()
@@ -254,32 +254,32 @@ end)
         end
     end
 
-    if msg == "?unsit" then
+    if msg == ".unsit" then
         game:GetService("Players").LocalPlayer.Character.Humanoid.Sit = false
     end
 
-    if msg == "?dance1" then
+    if msg == ".dance1" then
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
         task.wait()
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
         game:GetService("Players"):Chat("/e dance")
     end 
 
-    if msg == "?dance2" then
+    if msg == ".dance2" then
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
         task.wait()
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
         game:GetService("Players"):Chat("/e dance2")
     end
 
-    if msg == "?dance3" then
+    if msg == ".dance3" then
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
         task.wait()
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
         game:GetService("Players"):Chat("/e dance3")
     end
 
-    if msg == "?dance4" then
+    if msg == ".dance4" then
         local Anim = Instance.new("Animation")
         Anim.AnimationId = "rbxassetid://12874447851"
         local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
@@ -294,55 +294,55 @@ end)
         end)
         end
 
-    if msg == "?laugh" then
+    if msg == ".laugh" then
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
         task.wait()
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
         game:GetService("Players"):Chat("/e laugh")
     end
          
-    if msg == "?wave" then
+    if msg == ".wave" then
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
         task.wait()
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
         game:GetService("Players"):Chat("/e wave")
     end
 
-    if msg == "?cheer" then
+    if msg == ".cheer" then
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
         task.wait()
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
         game:GetService("Players"):Chat("/e cheer")
     end
 
-    if msg == "?point" then
+    if msg == ".point" then
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
         task.wait()
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
         game:GetService("Players"):Chat("/e point")
     end
 
-    if msg == "?stopemotes" then
+    if msg == ".stopemotes" then
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
         task.wait()
         game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
     end
 
-    if msg and #msg >= 10 and msg:sub(1, 10) == "?calculate" then
+    if msg and #msg >= 10 and msg:sub(1, 10) == ".calculate" then
         local equation = msg:sub(12)
         local result = loadstring("return " .. equation)()
         if #equation == 0 then
-        chatmsg("There must be a math equation after the ?math command! | Usage: ?math <equation>")
+        chatmsg("There must be a math equation after the .math command! | Usage: .math <equation>")
         else
         chatmsg("The answer to the equation you sent: " .. tostring(result))   
     end
     end
 
     
-    if msg and #msg >= 7 and msg:sub(1, 7) == "?runlua" then
+    if msg and #msg >= 7 and msg:sub(1, 7) == ".runlua" then
         local luaCode = msg:sub(9)
         if #luaCode == 0 then
-          chatmsg("There must be code after the ?runlua command! | Usage: ?runlua <code>")
+          chatmsg("There must be code after the .runlua command! | Usage: .runlua <code>")
           return
         end
         local success, result = pcall(loadstring(luaCode))
@@ -355,7 +355,7 @@ end)
         end
       end
 
-      if msg:sub(1, 6) == "?8ball" then
+      if msg:sub(1, 6) == ".8ball" then
         local answers = {
             "It is certain.",
             "Without a doubt.",
@@ -386,7 +386,7 @@ end)
         end
         end
 
-if msg:sub(1, 6) == "?wall " then
+if msg:sub(1, 6) == ".wall " then
     getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
     local player = game:GetService("Players"):GetPlayers()[
         (function()
@@ -424,7 +424,7 @@ if msg:sub(1, 6) == "?wall " then
 end
 
         
-        if msg:sub(1, 6) == "?line " then
+        if msg:sub(1, 6) == ".line " then
             getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
             local player = game:GetService("Players"):GetPlayers()[
                 (function()
@@ -461,7 +461,7 @@ end
         end
        end
 
-if msg:sub(1, 7) == "?swarm " then
+if msg:sub(1, 7) == ".swarm " then
     getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false
     for i, plr in ipairs(game:GetService("Players"):GetPlayers()) do
         if string.find(string.lower(plr.Name), string.lower(msg:sub(8))) or string.find(string.lower(plr.DisplayName), string.lower(msg:sub(8))) then
@@ -484,7 +484,7 @@ if msg:sub(1, 7) == "?swarm " then
 end
 
         
-if msg:sub(1, 8) == "?lookat " then
+if msg:sub(1, 8) == ".lookat " then
     for _, plr in ipairs(game:GetService("Players"):GetPlayers()) do
         if string.lower(plr.Name):sub(1, string.len(msg:sub(9))) == string.lower(msg:sub(9)) or
            string.lower(plr.DisplayName):sub(1, string.len(msg:sub(9))) == string.lower(msg:sub(9)) then
@@ -505,7 +505,7 @@ if msg:sub(1, 8) == "?lookat " then
 end
 
 
-if msg:sub(1, 8) == "?follow " then
+if msg:sub(1, 8) == ".follow " then
     local playerName = msg:sub(9)
     if getgenv().LoopFollow == true then
         getgenv().LoopFollow = false
@@ -550,7 +550,7 @@ end
 
 
 
-if msg:sub(1, 6) == "?goto " then
+if msg:sub(1, 6) == ".goto " then
     getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
     local playerName = msg:sub(7)
     local Players = game:GetService("Players")
@@ -582,39 +582,39 @@ end
 
 
             
-        if msg == "?stopall" then
+        if msg == ".stopall" then
         getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopGreet = false, false, false, false, false, false
         end
 
-        if msg == "?re" then
+        if msg == ".re" then
         game.Players.LocalPlayer.Character.Humanoid.Health = 0
         end
 
-        if msg == "?sv" then
+        if msg == ".sv" then
         game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(".gg/hear","All")
         end
 
-        if msg == "?unlookat" then
+        if msg == ".unlookat" then
         getgenv().LoopLook = false
         end
 
-        if msg == "?unswarm" then
+        if msg == ".unswarm" then
         getgenv().LoopSwarm = false
         end
 
-        if msg == "?unfollow" then
+        if msg == ".unfollow" then
         getgenv().LoopFollow = false
         end
 
-        if msg == "?unwall" then
+        if msg == ".unwall" then
         getgenv().LoopWall = false
         end
 
-        if msg == "?unline" then
+        if msg == ".unline" then
         getgenv().LoopLine = false
         end
 
-        if msg == "?rotate" then
+        if msg == ".rotate" then
         local spin =  Instance.new("BodyAngularVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
         spin.AngularVelocity = Vector3.new(0, -25, 0)
 
@@ -635,7 +635,7 @@ end
         end)
         end
 
-        if msg == "?playercount" then
+        if msg == ".playercount" then
         if game.Players.LocalPlayer.Name == bots[1] then
         local botAmount = 0
         for _, player in pairs(game:GetService("Players"):GetPlayers()) do
