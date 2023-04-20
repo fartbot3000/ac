@@ -102,7 +102,7 @@ end
     end
                 
     if msg == ".rj" then
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer) 
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)
     end
 
     if msg == ".cmds" then
@@ -112,7 +112,7 @@ end
         task.wait(1)
         chatmsg("Cmds With Arguments Pg 2: .runlua [code] | .calculate [equation]")
         task.wait(1)
-        chatmsg("Cmds Without Arguments List: .re | .rj | .rje |.playercount | .dance1 | .dance2 | .dance3 | .dance4 | .laugh | .wave | .cheer | .point | .jump | .sv | .sit | .unsit | .leg")
+        chatmsg("Cmds Without Arguments List: .re | .rj | .rje |.playercount | .dance1 | .dance2 | .dance3 | .dance4 | .laugh | .wave | .cheer | .point | .jump | .sv | .sit | .unsit | .leg | .rescale")
         task.wait(1)
         chatmsg("Stop Cmds: .stop (for wall,swarm,line,lookat,follow cmds) | .unspam (for slowspam,fastspam cmds) | .stopemotes (self explanatory)")
         elseif game.Players.LocalPlayer.Name ~= bots[1] then
@@ -156,6 +156,34 @@ end
                 end
             end
         end
+    end
+
+    if msg == ".rescale" then
+                local character = game:GetService("Players").LocalPlayer.Character
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+local function wipe_parts()
+            for _, part in pairs(character:GetDescendants()) do
+                if part:IsA("BasePart") and part.Name ~= "Head" then
+                    for _, attachment in pairs(part:GetDescendants()) do
+                        if attachment:IsA("Attachment") and attachment:FindFirstChild("OriginalPosition") then
+                            attachment.OriginalPosition:Destroy()
+                        end
+                    end
+                    part:WaitForChild("OriginalSize"):Destroy()
+                    if part:FindFirstChild("AvatarPartScaleType") then
+                        part:FindFirstChild("AvatarPartScaleType"):Destroy()
+                    end
+                end
+            end
+        end
+        wipe_parts()
+        humanoid:WaitForChild("BodyTypeScale"):Destroy()
+        wipe_parts()
+        humanoid:WaitForChild("BodyWidthScale"):Destroy()
+        wipe_parts()
+        humanoid:WaitForChild("BodyDepthScale"):Destroy()
+        wipe_parts()
+        humanoid:WaitForChild("HeadScale"):Destroy()
     end
 
     if msg == ".unsit" then
@@ -496,14 +524,14 @@ end
         
         if msg == ".re2" then
         local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-		game.Players.LocalPlayer.Character = nil
-		game.Players.LocalPlayer.Character = workspace[game.Players.LocalPlayer.Name]
-		game.Players.LocalPlayer.Character.Humanoid.Health = 0
-		wait(0.6)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
-		game.Players.LocalPlayer.CharacterAdded:Wait():WaitForChild('HumanoidRootPart')['CFrame'] = pos
-		local FaggotFucktard = imgay.Character:WaitForChild("ForceField")
-		FaggotFucktard:Destroy()
+        game.Players.LocalPlayer.Character = nil
+        game.Players.LocalPlayer.Character = workspace[game.Players.LocalPlayer.Name]
+        game.Players.LocalPlayer.Character.Humanoid.Health = 0
+        wait(0.6)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+        game.Players.LocalPlayer.CharacterAdded:Wait():WaitForChild('HumanoidRootPart')['CFrame'] = pos
+        local FaggotFucktard = imgay.Character:WaitForChild("ForceField")
+        FaggotFucktard:Destroy()
         end
 
         if msg == ".sv" then
