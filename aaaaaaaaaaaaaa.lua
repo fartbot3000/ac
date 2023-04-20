@@ -152,7 +152,7 @@ end
                     delete()
                     v:Destroy()
                     makeNew()
-                    task.wait(0.1)
+                    task.wait(0.3)
                 end
             end
         end
