@@ -168,6 +168,9 @@ if not (game:GetService("Players").LocalPlayer.Name == controller['MainAccount']
 		if (msg == ".unsit") then
 			game:GetService("Players").LocalPlayer.Character.Humanoid.Sit = false;
 		end
+		if (msg == ".close") then
+			game:Shutdown()
+		end
 		if (msg == ".dance1") then
 			game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true;
 			task.wait();
