@@ -458,7 +458,7 @@ if (msg == ".lag") then
 			end
         end
 	if msg:sub(1, 7) == ".stack " then
-    getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopLook, getgenv().LoopFollow, getgenv().LoopStack = false, false, false, false, false, false
+    getgenv().LoopSwarm, getgenv().LoopLine, getgenv().LoopWall, getgenv().LoopFollow, getgenv().LoopStack = false, false, false, false, false
     local player = game:GetService("Players"):GetPlayers()[
         (function()
             for i, plr in ipairs(game:GetService("Players"):GetPlayers()) do
@@ -568,7 +568,11 @@ end
         if msg == ".unline" then
         getgenv().LoopLine = false
         end
-
+			
+	if msg == ".unstack" then
+	getgenv().LoopStack = false	
+	end
+			
         if msg == ".rotate" then
         local spin =  Instance.new("BodyAngularVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
         spin.AngularVelocity = Vector3.new(0, -25, 0)
