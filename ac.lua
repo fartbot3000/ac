@@ -16,7 +16,7 @@ if not (game:GetService("Players").LocalPlayer.Name == controller["MainAccount"]
     local UserSettings = UserSettings()
     UserSettings.GameSettings.MasterVolume = 0
     task.wait()
-    setfpscap(30)
+    setfpscap(15)
     task.wait()
     game:GetService("RunService"):Set3dRenderingEnabled(false)
     task.wait()
